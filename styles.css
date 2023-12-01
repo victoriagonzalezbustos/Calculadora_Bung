@@ -22,7 +22,7 @@
 
 body{
     background: linear-gradient(0deg, #00813D 0%, #002511 84.18%);
-    
+    width: 1000px;
     height: 100vh;
 }
 
