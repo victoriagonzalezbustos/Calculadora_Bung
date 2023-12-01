@@ -76,7 +76,7 @@ function CambiarUnidadTransporte(){
                 unidad ="km"
                 document.getElementById("unidadTransporte").innerHTML = unidad
                 break
-            case "Colectivo/Combi":
+            case "Colectivo/ Combi":
                 unidad ="km"
                 document.getElementById("unidadTransporte").innerHTML = unidad
                 break
@@ -203,7 +203,7 @@ botonMateriales.addEventListener("click",
             break
         case "Varillas de acero":
             factorEmision = 1.99
-            unidad="tonelada"
+            unidad="metros"
             break
         case "Asfalto":
             factorEmision = 0.055
@@ -341,21 +341,22 @@ function CalcularTransporte(){
         case "Privados":
             factorEmision = 0.00017067
             unidad ="km"
+            huellaCarbonoTransporte = cantidad * factorEmision
             break
-        case "Colectivo/Combi":
+        case "Colectivo/ Combi":
             factorEmision = 0.0000965
             unidad ="km"
+            huellaCarbonoTransporte = cantidad * factorEmision
             break
         case "HGV":
             toneladasCarga = document.getElementById("campoTransportedecarga").value
             factorEmision = 0.00010445
             unidad ="km"
+            huellaCarbonoTransporte = cantidad * factorEmision *toneladasCarga
             break
 
     }
 
-
-    huellaCarbonoTransporte = cantidad * factorEmision *toneladasCarga
     console.log(huellaCarbonoTransporte)
     
     huellaTansporte= parseFloat(document.getElementById("huellaTransporte").textContent)
@@ -538,7 +539,7 @@ function CalcularResiduos(){
 
             break
         case "Madera":
-            factorEmision = 0.828013544544062
+            factorEmision = 0.00828013544544062
             unidad="tonelada"
 
             break
