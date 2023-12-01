@@ -30,7 +30,7 @@ function CambiarUnidad(){
             document.getElementById("unidadMateriales").innerHTML = unidad
             break
         case "Varillas de acero":
-            unidad = "tonelada"
+            unidad = "metros"
             document.getElementById("unidadMateriales").innerHTML = unidad
             break
         case "Asfalto":
