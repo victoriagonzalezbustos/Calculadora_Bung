@@ -9,7 +9,7 @@
 </head>
 <body>
     <section >
-        <img class="logo" src="/img/Imagen1.png" alt="">
+        <img class="logo" src="img/Imagen1.png" alt="">
     </section>
     <section class="medicion">
         <section class="resultados">
@@ -21,7 +21,7 @@
                     0
                 </H2>
                 <H2>
-                    Tco2
+                    tCO₂e
                 </H2>
             </section>
             <section class="huellas">
@@ -29,45 +29,69 @@
                     <h1 >
                         MATERIALES
                     </h1>
-                    <H2  id="huellaMateriales">
+                    <H2 class="huellita" id="huellaMateriales">
                         0
                     </H2>
                     <H2>
-                        Tco2
+                        tCO₂e
                     </H2>
                 </section>
                 <section class="huella transporte">
                     <h1>
                         TRANSPORTE
                     </h1>
-                    <H2 id="huellaTransporte">
+                    <H2 class="huellita" id="huellaTransporte">
                         0
                     </H2>
                     <H2>
-                        Tco2
+                        tCO₂e
                     </H2>
                 </section>
                 <section class="huella combustion">
                     <h1>
                         MAQUINARIA 
                     </h1>
-                    <H2 id="HuellaMaquinaria">
+                    <H2 class="huellita" id="HuellaMaquinaria">
                         0
                     </H2>
                     <H2>
-                        Tco2
+                        tCO₂e
                     </H2>
                 </section >
                 <section class="huella residuos">
                     <h1>
                         RESIDUOS
                     </h1>
-                    <H2 id="huellaResiduos">
+                    <H2 class="huellita" id="huellaResiduos">
                         0
                     </H2>
                     <H2>
-                        Tco2
+                        tCO₂e
                     </H2>
+                </section>
+
+            </section>
+
+            <section class="porcentajes">
+                <section  class="porcentaje">
+                    <h1  class="porcentajeEmisiones" id="porcentajeMateriales">
+                        0%
+                    </h1>
+                </section>
+                <section class="porcentaje">
+                    <h1 class="porcentajeEmisiones"  id=" porcentajeTransporte">
+                        0%
+                    </h1>
+                </section>
+                <section class="porcentaje">
+                    <h1 class="porcentajeEmisiones" id="porcentajeMaquinaria">
+                        0%
+                    </h1>
+                </section>
+                <section class="porcentaje" >
+                    <h1 class="porcentajeEmisiones" id="porcentajeResiduos">
+                        0%
+                    </h1>
                 </section>
             </section>
             <section    class="listaProductos" id="listaEmisiones">
@@ -83,9 +107,6 @@
                     </h1>
                     <h1 class="cuartaLinea">
                         Total
-                    </h1>
-                    <h1 class="quintaLinea">
-                        Emisiones
                     </h1>
                 </section>
 
@@ -112,7 +133,9 @@
                             <option value="Agua">Agua</option>
                         </select>
                         <input class="cantidad" id="cantidadMaterial" type="text" placeholder="Cantidad">
-                        <input class="unidad" type="text" placeholder="Unidad">
+                        <h1 class="unidad" id="unidadMateriales">
+                            unidad
+                        </h1>
                         <button id="botonMateriales">CALCULAR</button>
                 </div>
             </section>
@@ -121,11 +144,13 @@
                 <div class="campos">
                     <select class="material" id="selectTransporte" type="text" placeholder="Material">
                         <option value="Privados">Privados</option>
-                        <option value="Colectivo/Combi">Colectivo/Combi</option>
+                        <option value="Colectivo/ Combi">Colectivo/ Combi</option>
                         <option value="HGV">Transporte de carga</option>
                     </select>
                     <input class="cantidad" id = "cantidadTransporte" type="text" placeholder="Cantidad">
-                    <input class="unidad" type="text" placeholder="Unidad">
+                    <h1 class="unidad" id="unidadTransporte">
+                        unidad
+                    </h1>
                     <button id="botonTransporte">CALCULAR</button>
                 </div>
             </section>
@@ -140,7 +165,9 @@
                         <option value="Gas natural">Gas natural</option>
                     </select>
                     <input class="cantidad" id="cantidadMaquinaria" type="text" placeholder="Cantidad">
-                    <input class="unidad" type="text" placeholder="Unidad">
+                    <h1 class="unidad" id="unidadMaquinaria">
+                        unidad
+                    </h1>
                     <button id="botonMaquinaria">CALCULAR</button>
                 </div>
             </section>
@@ -155,7 +182,9 @@
                         <option value="Metales">Metales</option>
                     </select>
                     <input class="cantidad" id="cantidadResiduos" type="text" placeholder="Cantidad">
-                    <input class="unidad" type="text" placeholder="Unidad"> 
+                    <h1 class="unidad" id="unidadResiduos">
+                        unidad
+                    </h1>
                     <button id="botonResiduos">CALCULAR</button>
                 </div>   
             </section>

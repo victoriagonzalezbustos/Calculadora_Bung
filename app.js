@@ -1,19 +1,189 @@
 console.log("hola")
 
 class Producto {
-    constructor(material, cantidad, unidad, huella, emisiones){
+    constructor(material, cantidad, unidad, huella){
         this.material = material,
         this.cantidad = cantidad,
         this.unidad = unidad,
         this.huella = huella
-        this.emisiones = emisiones
     }
 }
 
-listahuellasMateriales =[]
-listahuellasTransporte =[]
-listahuellasMaquinaria =[]
-listahuellasResiduos =[]
+let porcentaje = 0 
+listaPorcentajes=[]
+
+
+
+selectMaterial = document.getElementById("selectMaterial")
+
+selectMaterial.addEventListener("change",
+function CambiarUnidad(){
+     materialElegido = selectMaterial.value
+     switch(materialElegido){
+        case "Cemento Portland":
+            unidad = "tonelada"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+           
+            break
+        case "Hormigón elaborado":
+            unidad = "tonelada"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Varillas de acero":
+            unidad = "tonelada"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Asfalto":
+            unidad = "tonelada"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Agregados y arena":
+            unidad = "tonelada"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Tuberías PVC":
+            unidad = "metros"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Tuberías acero":
+            unidad = "metros"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Ladrillos":
+            unidad = "tonelada"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Pintura":
+            unidad = "litros"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+        case "Agua":
+            unidad = "m3"
+            document.getElementById("unidadMateriales").innerHTML = unidad
+            break
+     }
+})
+
+
+
+selectTransporte = document.getElementById("selectTransporte")
+
+selectTransporte.addEventListener("change",
+function CambiarUnidadTransporte(){
+     materialElegidoTransporte = selectTransporte.value
+     switch(materialElegidoTransporte){
+            case "Privados":
+                unidad ="km"
+                document.getElementById("unidadTransporte").innerHTML = unidad
+                break
+            case "Colectivo/Combi":
+                unidad ="km"
+                document.getElementById("unidadTransporte").innerHTML = unidad
+                break
+            case "HGV":
+                unidad ="km"
+                document.getElementById("unidadTransporte").innerHTML =  `<input class= "campoCarga" id="campoTransportedecarga" type="text" placeholder="Tonelada">`
+
+                break
+    
+        
+     }
+})
+
+
+
+selectMaquinaria = document.getElementById("selectMaquinaria")
+
+selectMaquinaria.addEventListener("change",
+function CambiarUnidadMaquinaria(){
+     materialElegidoMaquinaria = selectMaquinaria.value
+     switch(materialElegidoMaquinaria){
+            case "Diesel":
+                unidad= "litro"
+                document.getElementById("unidadMaquinaria").innerHTML = unidad
+                break
+            case "Fuel oil":
+                unidad= "litro"
+                document.getElementById("unidadMaquinaria").innerHTML = unidad
+                break
+            case "GLP":
+                unidad= "litro"
+                document.getElementById("unidadMaquinaria").innerHTML = unidad
+                break
+            case "Nafta":
+                unidad= "litro"
+                document.getElementById("unidadMaquinaria").innerHTML = unidad
+                break
+            case "Gas natural":
+                unidad= "m3"
+                document.getElementById("unidadMaquinaria").innerHTML = unidad
+                break
+        
+     }
+})
+
+
+
+
+
+selectResiduos= document.getElementById("selectResiduos")
+
+selectResiduos.addEventListener("change",
+function CambiarUnidadResiduos(){
+     materialElegidoResiduos = selectResiduos.value
+     switch(materialElegidoResiduos){
+        case "Construcción y demolición":
+            
+            unidad="tonelada"
+            document.getElementById("unidadResiduos").innerHTML = unidad
+            break
+        case "Plástico":
+            unidad="tonelada"
+            document.getElementById("unidadResiduos").innerHTML = unidad
+
+            break
+        case "Vidrio":
+            unidad="tonelada"
+            document.getElementById("unidadResiduos").innerHTML = unidad
+
+            break
+        case "Madera":
+            unidad="tonelada"
+            document.getElementById("unidadResiduos").innerHTML = unidad
+
+            break
+        case "Metales":
+            unidad="tonelada"
+            document.getElementById("unidadResiduos").innerHTML = unidad
+
+            break
+        
+     }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 botonMateriales = document.getElementById("botonMateriales")
 
@@ -25,6 +195,7 @@ botonMateriales.addEventListener("click",
         case "Cemento Portland":
             factorEmision = 0.912
             unidad = "tonelada"
+           
             break
         case "Hormigón elaborado":
             factorEmision = 0.103
@@ -66,22 +237,51 @@ botonMateriales.addEventListener("click",
     }
 
     huellaCarbono = cantidad * factorEmision
-    huellaMateriales= parseInt(document.getElementById("huellaMateriales").textContent)
-    console.log(huellaMateriales)
+    huellaMateriales= parseFloat(document.getElementById("huellaMateriales").textContent)
     huellaMateriales = huellaMateriales + huellaCarbono
-    console.log(huellaMateriales)
+  
    
     contenedorhuellaMaterial = document.getElementById("huellaMateriales") 
     contenedorhuellaMaterial.innerText= huellaMateriales.toFixed(2)
+
 
     huellaCarbonoTotal = parseFloat(document.getElementById("huellaCarbonoTotal").textContent)
     console.log(huellaCarbonoTotal)
     huellaCarbonoTotal = huellaCarbonoTotal + huellaCarbono
     document.getElementById("huellaCarbonoTotal").innerHTML = huellaCarbonoTotal.toFixed(2)
 
-    emisiones = ((huellaCarbono/huellaCarbonoTotal)*100).toFixed(2) + "%"
-    product = new Producto(material, cantidad, unidad, huellaCarbono.toFixed(2),emisiones)
-    console.log(product)
+    
+
+   listaPorcentajes = []
+   listaHuellas = document.querySelectorAll(".huellita")
+   listaHuellas.forEach(element => {
+    
+     a = (parseFloat(element.textContent)/huellaCarbonoTotal.toFixed(2)) * 100
+     console.log(a)
+     listaPorcentajes.push(a)
+
+   });
+
+   console.log(listaPorcentajes)
+
+   listaPorcentajeshtml = document.querySelectorAll(".porcentajeEmisiones")
+   console.log(listaPorcentajeshtml)
+
+   for (let i in listaPorcentajes){
+    listaPorcentajeshtml[i].innerHTML = listaPorcentajes[i].toFixed(2) + "%"
+   }
+
+  
+
+ 
+
+
+
+
+
+   
+    product = new Producto(material, cantidad, unidad, huellaCarbono.toFixed(2))
+   
 
     function addProduct(product){
         var productlist = document.getElementById("listaEmisiones")
@@ -100,19 +300,29 @@ botonMateriales.addEventListener("click",
             <h1 class=cuartaLinea>
             ${product.huella}
             </h1>
-            <h1 class= "quintaLinea">
-            ${product.emisiones}
-            </h1>
         </div>
         `
         productlist.appendChild(element)
     }
 addProduct(product)
 
-arrayProductos = document.querySelectorAll(".quintaLinea")
-console.log(arrayProductos)
+/*
+listaPorcentajeEmisiones.push(huellaCarbono.toFixed(2))
+listaPorcentajeEmisionesCorregidas = []
+for(let i in listaPorcentajeEmisiones){
+    
+    emisionCorregida= parseFloat(i)/huellaCarbonoTotal
+    listaPorcentajeEmisionesCorregidas.push(emisionCorregida.toFixed(2))
+  
+}
 
-listahuellasMateriales.push(huellaCarbono)
+listaCampoPorcentajeEmisiones = document.querySelectorAll(".quintaLinea")
+console.log(listaCampoPorcentajeEmisiones)
+for ( i in  listaPorcentajeEmisionesCorregidas){
+    indexi = i.indexOf()
+
+}*/
+
     
 
 })
@@ -137,34 +347,33 @@ function CalcularTransporte(){
             unidad ="km"
             break
         case "HGV":
+            toneladasCarga = document.getElementById("campoTransportedecarga").value
             factorEmision = 0.00010445
             unidad ="km"
             break
 
     }
 
-    console.log(cantidad)
-    console.log(material)
-    console.log(factorEmision)
 
-    huellaCarbonoTransporte = cantidad * factorEmision
+    huellaCarbonoTransporte = cantidad * factorEmision *toneladasCarga
     console.log(huellaCarbonoTransporte)
+    
     huellaTansporte= parseFloat(document.getElementById("huellaTransporte").textContent)
-    console.log(huellaTansporte)
+  
     huellaTransporte = huellaTansporte + huellaCarbonoTransporte
-    console.log(huellaTransporte)
+   
 
     contenedorhuellaTransporte = document.getElementById("huellaTransporte") 
     contenedorhuellaTransporte.innerText= huellaTransporte.toFixed(2)
 
     huellaCarbonoTotal = parseFloat(document.getElementById("huellaCarbonoTotal").textContent)
-    console.log(huellaCarbonoTotal)
+   
     huellaCarbonoTotal = huellaCarbonoTotal + huellaCarbonoTransporte
     document.getElementById("huellaCarbonoTotal").innerHTML = huellaCarbonoTotal.toFixed(2)
 
-    emisiones = ((huellaCarbonoTransporte/huellaCarbonoTotal)*100).toFixed(2) + "%"
-    product = new Producto(material, cantidad, unidad, huellaCarbonoTransporte.toFixed(2), emisiones)
-    console.log(product)
+
+    product = new Producto(material, cantidad, unidad, huellaCarbonoTransporte.toFixed(2))
+   
 
     function addProduct(product){
         var productlist = document.getElementById("listaEmisiones")
@@ -183,16 +392,32 @@ function CalcularTransporte(){
             <h1 class=cuartaLinea>
             ${product.huella}
             </h1>
-            <h1 class= "quintaLinea">
-            ${product.emisiones}
-            </h1>
         </div>
         `
         productlist.appendChild(element)
     }
 addProduct(product)
 
-listahuellasTransporte.push()
+listaPorcentajes = []
+listaHuellas = document.querySelectorAll(".huellita")
+listaHuellas.forEach(element => {
+ 
+  a = (parseFloat(element.textContent)/huellaCarbonoTotal.toFixed(2)) * 100
+  
+  listaPorcentajes.push(a)
+
+});
+
+
+
+listaPorcentajeshtml = document.querySelectorAll(".porcentajeEmisiones")
+
+
+for (let i in listaPorcentajes){
+ listaPorcentajeshtml[i].innerHTML = listaPorcentajes[i].toFixed(2) + "%"
+}
+
+
 
 })
 
@@ -243,9 +468,9 @@ function CalcularMaquinaria(){
     huellaCarbonoTotal = huellaCarbonoTotal + huellaCarbonoMaquinaria
     document.getElementById("huellaCarbonoTotal").innerHTML = huellaCarbonoTotal.toFixed(2)
 
-    emisiones = ((huellaCarbonoMaquinaria/huellaCarbonoTotal)*100).toFixed(2) + "%"
-    product = new Producto(material, cantidad, unidad, huellaCarbonoMaquinaria.toFixed(2), emisiones)
-    console.log(product)
+
+    product = new Producto(material, cantidad, unidad, huellaCarbonoMaquinaria.toFixed(2))
+
 
     function addProduct(product){
         var productlist = document.getElementById("listaEmisiones")
@@ -264,14 +489,30 @@ function CalcularMaquinaria(){
             <h1 class=cuartaLinea>
             ${product.huella}
             </h1>
-            <h1 class= "quintaLinea">
-            ${product.emisiones}
-            </h1>
         </div>
         `
         productlist.appendChild(element)
     }
 addProduct(product)
+listaPorcentajes = []
+listaHuellas = document.querySelectorAll(".huellita")
+listaHuellas.forEach(element => {
+ 
+  a = (parseFloat(element.textContent)/huellaCarbonoTotal.toFixed(2)) * 100
+  console.log(a)
+  listaPorcentajes.push(a)
+
+});
+
+console.log(listaPorcentajes)
+
+listaPorcentajeshtml = document.querySelectorAll(".porcentajeEmisiones")
+console.log(listaPorcentajeshtml)
+
+for (let i in listaPorcentajes){
+ listaPorcentajeshtml[i].innerHTML = listaPorcentajes[i].toFixed(2) + "%"
+}
+
 })
 
 
@@ -325,8 +566,7 @@ function CalcularResiduos(){
     huellaCarbonoTotal = huellaCarbonoTotal + huellaCarbonoResiduos 
     document.getElementById("huellaCarbonoTotal").innerHTML = huellaCarbonoTotal.toFixed(2)
 
-    emisiones = ((huellaCarbonoResiduos/huellaCarbonoTotal)*100).toFixed(2) + "%"
-    product = new Producto(material, cantidad, unidad, huellaCarbonoResiduos.toFixed(2), emisiones)
+    product = new Producto(material, cantidad, unidad, huellaCarbonoResiduos.toFixed(2))
     console.log(product)
 
     function addProduct(product){
@@ -346,12 +586,28 @@ function CalcularResiduos(){
             <h1 class=cuartaLinea>
             ${product.huella}
             </h1>
-            <h1 class= "quintaLinea">
-            ${product.emisiones}
-            </h1>
         </div>
         `
         productlist.appendChild(element)
     }
 addProduct(product)
+listaPorcentajes = []
+listaHuellas = document.querySelectorAll(".huellita")
+listaHuellas.forEach(element => {
+ 
+  a = (parseFloat(element.textContent)/huellaCarbonoTotal.toFixed(2)) * 100
+  console.log(a)
+  listaPorcentajes.push(a)
+
+});
+
+console.log(listaPorcentajes)
+
+listaPorcentajeshtml = document.querySelectorAll(".porcentajeEmisiones")
+console.log(listaPorcentajeshtml)
+
+for (let i in listaPorcentajes){
+ listaPorcentajeshtml[i].innerHTML = listaPorcentajes[i].toFixed(2) + "%"
+}
+
 })
