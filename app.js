@@ -1,10 +1,9 @@
 console.log("hola")
 
 class Producto {
-    constructor(material, cantidad, unidad, huella){
+    constructor(material, cantidad, huella){
         this.material = material,
         this.cantidad = cantidad,
-        this.unidad = unidad,
         this.huella = huella
     }
 }
@@ -126,40 +125,6 @@ function CambiarUnidadMaquinaria(){
 
 
 
-selectResiduos= document.getElementById("selectResiduos")
-
-selectResiduos.addEventListener("change",
-function CambiarUnidadResiduos(){
-     materialElegidoResiduos = selectResiduos.value
-     switch(materialElegidoResiduos){
-        case "Construcción y demolición":
-            
-            unidad="tonelada"
-            document.getElementById("unidadResiduos").innerHTML = unidad
-            break
-        case "Plástico":
-            unidad="tonelada"
-            document.getElementById("unidadResiduos").innerHTML = unidad
-
-            break
-        case "Vidrio":
-            unidad="tonelada"
-            document.getElementById("unidadResiduos").innerHTML = unidad
-
-            break
-        case "Madera":
-            unidad="tonelada"
-            document.getElementById("unidadResiduos").innerHTML = unidad
-
-            break
-        case "Metales":
-            unidad="tonelada"
-            document.getElementById("unidadResiduos").innerHTML = unidad
-
-            break
-        
-     }
-})
 
 
 
@@ -191,7 +156,7 @@ botonMateriales.addEventListener("click",
     function CalcularMateriales(){
     let material = document.getElementById("selectMaterial").value
     let cantidad = document.getElementById("cantidadMaterial").value
-    switch (material){
+    /*switch (material){
         case "Cemento Portland":
             factorEmision = 0.912
             unidad = "tonelada"
@@ -234,9 +199,11 @@ botonMateriales.addEventListener("click",
             unidad = "m3"
             break
 
-    }
+    }*/
 
-    huellaCarbono = cantidad * factorEmision
+    factorEmision =  0.00000600 
+
+    huellaCarbono = cantidad * factorEmision * material
     huellaMateriales= parseFloat(document.getElementById("huellaMateriales").textContent)
     huellaMateriales = huellaMateriales + huellaCarbono
   
@@ -280,7 +247,7 @@ botonMateriales.addEventListener("click",
 
 
    
-    product = new Producto(material, cantidad, unidad, huellaCarbono.toFixed(2))
+    product = new Producto(material, cantidad, huellaCarbono.toFixed(2))
    
 
     function addProduct(product){
@@ -293,9 +260,6 @@ botonMateriales.addEventListener("click",
             </h1>
             <h1 class=segundaLinea>
             ${product.cantidad}
-            </h1>
-            <h1 class=terceraLinea>
-            ${product.unidad}
             </h1>
             <h1 class=cuartaLinea>
             ${product.huella}
@@ -337,7 +301,7 @@ botonTransporte.addEventListener("click",
 function CalcularTransporte(){
     let material = document.getElementById("selectTransporte").value
     let cantidad = document.getElementById("cantidadTransporte").value
-    switch (material){
+    /*switch (material){
         case "Privados":
             factorEmision = 0.00017067
             unidad ="km"
@@ -355,7 +319,17 @@ function CalcularTransporte(){
             huellaCarbonoTransporte = cantidad * factorEmision *toneladasCarga
             break
 
+    }*/
+
+    if(material <= 10){
+        factorEmision = 0.000616
+    }else if(material > 10 && material < 20){
+        factorEmision = 0.000766
+    } else {
+        factorEmision = 0.000917
     }
+
+    huellaCarbonoTransporte = factorEmision *material*cantidad
 
     console.log(huellaCarbonoTransporte)
     
@@ -373,7 +347,7 @@ function CalcularTransporte(){
     document.getElementById("huellaCarbonoTotal").innerHTML = huellaCarbonoTotal.toFixed(2)
 
 
-    product = new Producto(material, cantidad, unidad, huellaCarbonoTransporte.toFixed(2))
+    product = new Producto(material, cantidad, huellaCarbonoTransporte.toFixed(2))
    
 
     function addProduct(product){
@@ -386,9 +360,6 @@ function CalcularTransporte(){
             </h1>
             <h1 class=segundaLinea>
             ${product.cantidad}
-            </h1>
-            <h1 class=terceraLinea>
-            ${product.unidad}
             </h1>
             <h1 class=cuartaLinea>
             ${product.huella}
@@ -429,7 +400,7 @@ botonMaquinaria.addEventListener("click",
 function CalcularMaquinaria(){
     let material = document.getElementById("selectMaquinaria").value
     let cantidad = document.getElementById("cantidadMaquinaria").value
-    switch (material){
+    /*switch (material){
         case "Diesel":
             factorEmision = 0.00276
             unidad= "litro"
@@ -451,10 +422,10 @@ function CalcularMaquinaria(){
             unidad= "m3"
             break
 
-    }
+    }*/
+    factorEmision = 0.00002779
 
-
-    huellaCarbonoMaquinaria = cantidad * factorEmision
+    huellaCarbonoMaquinaria = cantidad * factorEmision * material   
     console.log(huellaCarbonoMaquinaria)
     huellaMaquinaria= parseFloat(document.getElementById("HuellaMaquinaria").textContent)
     console.log(huellaMaquinaria)
@@ -470,7 +441,7 @@ function CalcularMaquinaria(){
     document.getElementById("huellaCarbonoTotal").innerHTML = huellaCarbonoTotal.toFixed(2)
 
 
-    product = new Producto(material, cantidad, unidad, huellaCarbonoMaquinaria.toFixed(2))
+    product = new Producto(material, cantidad, huellaCarbonoMaquinaria.toFixed(2))
 
 
     function addProduct(product){
@@ -483,9 +454,6 @@ function CalcularMaquinaria(){
             </h1>
             <h1 class=segundaLinea>
             ${product.cantidad}
-            </h1>
-            <h1 class=terceraLinea>
-            ${product.unidad}
             </h1>
             <h1 class=cuartaLinea>
             ${product.huella}
@@ -517,98 +485,3 @@ for (let i in listaPorcentajes){
 })
 
 
-botonResiduos = document.getElementById("botonResiduos")
-
-botonResiduos.addEventListener("click",
-function CalcularResiduos(){
-    let material = document.getElementById("selectResiduos").value
-    let cantidad = document.getElementById("cantidadResiduos").value
-    switch (material){
-        case "Construcción y demolición":
-            factorEmision = 0.0930886907112728
-            unidad="tonelada"
-            break
-        case "Plástico":
-            factorEmision = 0.00888327131782946
-            unidad="tonelada"
-
-            break
-        case "Vidrio":
-            factorEmision = 0.00888327131782946
-            unidad="tonelada"
-
-            break
-        case "Madera":
-            factorEmision = 0.00828013544544062
-            unidad="tonelada"
-
-            break
-        case "Metales":
-            factorEmision = 0.00888327131782946
-            unidad="tonelada"
-
-            break
-
-    }
-
-
-    huellaCarbonoResiduos = cantidad * factorEmision
-    console.log(huellaCarbonoResiduos)
-    huellaResiduos= parseFloat(document.getElementById("huellaResiduos").textContent)
-    console.log(huellaResiduos)
-    huellaResiduos = huellaResiduos + huellaCarbonoResiduos
-    console.log(huellaResiduos)
-
-    contenedorhuellaResiduos = document.getElementById("huellaResiduos") 
-    contenedorhuellaResiduos.innerText= huellaResiduos.toFixed(2)
-
-    huellaCarbonoTotal = parseFloat(document.getElementById("huellaCarbonoTotal").textContent)
-    console.log(huellaCarbonoTotal)
-    huellaCarbonoTotal = huellaCarbonoTotal + huellaCarbonoResiduos 
-    document.getElementById("huellaCarbonoTotal").innerHTML = huellaCarbonoTotal.toFixed(2)
-
-    product = new Producto(material, cantidad, unidad, huellaCarbonoResiduos.toFixed(2))
-    console.log(product)
-
-    function addProduct(product){
-        var productlist = document.getElementById("listaEmisiones")
-        var element = document.createElement("div")
-        element.innerHTML = `
-        <div class= "titulos">
-            <h1 class=primeraLinea>
-            ${product.material}
-            </h1>
-            <h1 class=segundaLinea>
-            ${product.cantidad}
-            </h1>
-            <h1 class=terceraLinea>
-            ${product.unidad}
-            </h1>
-            <h1 class=cuartaLinea>
-            ${product.huella}
-            </h1>
-        </div>
-        `
-        productlist.appendChild(element)
-    }
-addProduct(product)
-listaPorcentajes = []
-listaHuellas = document.querySelectorAll(".huellita")
-listaHuellas.forEach(element => {
- 
-  a = (parseFloat(element.textContent)/huellaCarbonoTotal.toFixed(2)) * 100
-  console.log(a)
-  listaPorcentajes.push(a)
-
-});
-
-console.log(listaPorcentajes)
-
-listaPorcentajeshtml = document.querySelectorAll(".porcentajeEmisiones")
-console.log(listaPorcentajeshtml)
-
-for (let i in listaPorcentajes){
- listaPorcentajeshtml[i].innerHTML = listaPorcentajes[i].toFixed(2) + "%"
-}
-
-})

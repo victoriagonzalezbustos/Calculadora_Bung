@@ -27,7 +27,7 @@
             <section class="huellas">
                 <section class="huella materiales">
                     <h1 >
-                        MATERIALES
+                        Barcazas
                     </h1>
                     <H2 class="huellita" id="huellaMateriales">
                         0
@@ -58,17 +58,6 @@
                         tCO₂e
                     </H2>
                 </section >
-                <section class="huella residuos">
-                    <h1>
-                        RESIDUOS
-                    </h1>
-                    <H2 class="huellita" id="huellaResiduos">
-                        0
-                    </H2>
-                    <H2>
-                        tCO₂e
-                    </H2>
-                </section>
 
             </section>
 
@@ -88,25 +77,18 @@
                         0%
                     </h1>
                 </section>
-                <section class="porcentaje" >
-                    <h1 class="porcentajeEmisiones" id="porcentajeResiduos">
-                        0%
-                    </h1>
-                </section>
+
             </section>
             <section    class="listaProductos" id="listaEmisiones">
                 <section class="titulos">
                     <h1 class="primeraLinea">
-                        Tipo
+                        Toneladas
                     </h1>
                     <h1 class="segundaLinea">
-                        Cantidad
-                    </h1>
-                    <h1 class="terceraLinea">
-                        Unidad
+                        Kilometros
                     </h1>
                     <h1 class="cuartaLinea">
-                        Total
+                        Total 
                     </h1>
                 </section>
 
@@ -118,76 +100,33 @@
         </section>
         <section class="calculos">
             <section class="calculo materiales">
-                <h1>Materiales</h1>
+                <h1>Barcazas</h1>
                 <div class="campos">
-                        <select class="material" id="selectMaterial" type="text" placeholder="Material">
-                            <option value="Cemento Portland">Cemento Portland</option>
-                            <option value="Hormigón elaborado">Hormigón elaborado</option>
-                            <option value="Varillas de acero">Varillas de acero</option>
-                            <option value="Asfalto">Asfalto</option>
-                            <option value="Agregados y arena">Agregados y arena</option>
-                            <option value="Tuberías PVC">Tuberías PVC </option>
-                            <option value="Tuberías acero">Tuberías acero </option>
-                            <option value="Ladrillos"> Ladrillos </option>
-                            <option value="Pintura">Pintura </option>
-                            <option value="Agua">Agua</option>
-                        </select>
-                        <input class="cantidad" id="cantidadMaterial" type="text" placeholder="Cantidad">
-                        <h1 class="unidad" id="unidadMateriales">
-                            unidad
-                        </h1>
+                        <input class="material" id="selectMaterial" type="text" placeholder="Toneladas">
+                        <input class="cantidad" id="cantidadMaterial" type="text" placeholder="KM">
+
                         <button id="botonMateriales">CALCULAR</button>
                 </div>
             </section>
             <section class="calculo transporte">
-                <h1>Transporte</h1>
+                <h1>Camiones</h1>
                 <div class="campos">
-                    <select class="material" id="selectTransporte" type="text" placeholder="Material">
-                        <option value="Privados">Privados</option>
-                        <option value="Colectivo/ Combi">Colectivo/ Combi</option>
-                        <option value="HGV">Transporte de carga</option>
-                    </select>
-                    <input class="cantidad" id = "cantidadTransporte" type="text" placeholder="Cantidad">
-                    <h1 class="unidad" id="unidadTransporte">
-                        unidad
-                    </h1>
+                    <input class="material" id="selectTransporte" type="text" placeholder="Toneladas">
+                    <input class="cantidad" id = "cantidadTransporte" type="text" placeholder="KM">
+
                     <button id="botonTransporte">CALCULAR</button>
                 </div>
             </section>
             <section class="calculo combustion">
-                <h1>Maquinaria y Equipos</h1>
+                <h1>Tren</h1>
                 <div class="campos">
-                    <select class="material" type="text" id="selectMaquinaria" placeholder="Material">
-                        <option value="Diesel">Diesel</option>
-                        <option value="Fuel oil">Fuel oil</option>
-                        <option value="GLP">GLP</option>
-                        <option value="Nafta">Nafta</option>
-                        <option value="Gas natural">Gas natural</option>
-                    </select>
-                    <input class="cantidad" id="cantidadMaquinaria" type="text" placeholder="Cantidad">
-                    <h1 class="unidad" id="unidadMaquinaria">
-                        unidad
-                    </h1>
+                    <input class="material" type="text" id="selectMaquinaria" placeholder="Toneladas">
+                    <input class="cantidad" id="cantidadMaquinaria" type="text" placeholder="KM">
+
                     <button id="botonMaquinaria">CALCULAR</button>
                 </div>
             </section>
-            <section class="calculo residuos">
-                <h1>Residuos</h1>
-                <div class="campos">
-                    <select class="material" type="text" id="selectResiduos" placeholder="Material"> 
-                        <option value="Construcción y demolición">Construcción y demolición</option>
-                        <option value="Plástico">Plástico</option>
-                        <option value="Vidrio">Vidrio</option>
-                        <option value="Madera">Madera</option>
-                        <option value="Metales">Metales</option>
-                    </select>
-                    <input class="cantidad" id="cantidadResiduos" type="text" placeholder="Cantidad">
-                    <h1 class="unidad" id="unidadResiduos">
-                        unidad
-                    </h1>
-                    <button id="botonResiduos">CALCULAR</button>
-                </div>   
-            </section>
+
 
         </section>
     </section>
