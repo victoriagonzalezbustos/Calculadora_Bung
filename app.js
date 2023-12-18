@@ -329,7 +329,7 @@ function CalcularTransporte(){
         factorEmision = 0.000917
     }
 
-    huellaCarbonoTransporte = factorEmision *material*cantidad
+    huellaCarbonoTransporte = factorEmision *cantidad
 
     console.log(huellaCarbonoTransporte)
     
