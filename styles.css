@@ -249,3 +249,7 @@ body{
 .titulos h1 .primeraLinea{
     width:100px;
 }
+
+input::placeholder{
+    color: #FFF;
+}
